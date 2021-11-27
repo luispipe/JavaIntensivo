@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ciudad;
+
+import java.util.*;
+
+/**
+ *
+ * @author usuario1
+ */
+public class Hilo extends Thread{
+    private PanelControles panelControles;
+    
+    public Hilo(PanelControles panelControles) {
+        this.panelControles = panelControles;
+    }
+    @Override
+    public void run() {
+        Automovil automovil = new Automovil(new Posicion(), 5);
+        Deportivo deportivo = new Deportivo(new Posicion(), 5);
+        Platon camioneta = new Platon(new Posicion(), 3, 4);
+        camioneta.llevar(ParametrosDibujo.CONTENIDO_CARGA);
+        Furgon furgon = new Furgon(new Posicion(2, 50), 3, 4);
+        furgon.llevar(panelControles.getjTextFieldCarga().getText());
+        
+        List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
+        listaVehiculos.add(automovil);
+        listaVehiculos.add(deportivo);
+    
+    
+        if (panelControles.getjCheckBoxVehiculosCarga().isSelected()) {
+            listaVehiculos.add(camioneta);
+            listaVehiculos.add(furgon);
+        }
+        
+        List<Sitio> listaSitios = new ArrayList<Sitio>();
+        for (int i = 0; i < ParametrosDibujo.NUMERO_SITIOS; i++) {
+            listaSitios.add(new Sitio(new Posicion()));
+        }
+        
+        Ciudad ciudad = new Ciudad(listaVehiculos, listaSitios);
+
+        for (int i = 0; i < ParametrosDibujo.ITERACIONES_CIUDAD; i++) {
+            if (panelControles.getjRadioButtonAdelante().isSelected()) {
+                ciudad.mover();
+            }
+      /**Acá*/      panelControles.getjTextArea().setText(ciudad.pintar());
+            try {
+                sleep((Integer) panelControles.getjSpinnerDormir().getValue());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //Reactiva el botono de ejecución
+        panelControles.getjButtonIniciar().setEnabled(true);
+    }
+        
+    }
+    
+
+    
+
+
