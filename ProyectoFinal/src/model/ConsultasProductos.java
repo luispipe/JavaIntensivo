@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import static model.Conexion.getConexion;
 
 /**
@@ -46,21 +48,21 @@ public class ConsultasProductos {
         } 
     }
     
+    //Error un espacio antes del WHERE en el SQL
     public boolean actualizar(Producto pro) throws SQLException{
         PreparedStatement ps= null;
         Connection con= getConexion();
         
-        String sql= "UPDATE producto SET codigo=?,nombre=?,precio=?, cantidad=?"
+        String sql= "UPDATE producto SET nombre=?,precio=?, cantidad=? "
                 + "WHERE codigo=?";
         
         try{
             ps= con.prepareStatement(sql);
-            ps.setString(1, pro.getCodigo());
-            ps.setString(2, pro.getNombre());
-            ps.setDouble(3, pro.getPrecio());
-            ps.setInt(4, pro.getCantidad());
-            ps.setString(5, pro.getCodigo());
-            
+            ps.setString(1, pro.getNombre());
+            ps.setDouble(2, pro.getPrecio());
+            ps.setInt(3, pro.getCantidad());
+            ps.setString(4, pro.getCodigo());
+
             ps.execute();
             return true;
 
@@ -135,5 +137,28 @@ public class ConsultasProductos {
         } 
     
     }
+      
+     public List listar() throws SQLException{
+         List<Producto>datos = new ArrayList<>();
+         String sql= "select * from producto";
+         try{
+             Connection con= getConexion();
+             PreparedStatement ps= con.prepareStatement(sql);
+             ResultSet rs=ps.executeQuery();
+             
+             while(rs.next()){
+                 Producto p= new Producto();
+                 p.setCodigo(rs.getString(1));
+                 p.setNombre(rs.getString(2));
+                 p.setPrecio(rs.getDouble(3));
+                 p.setCantidad(rs.getInt(4));
+                 datos.add(p);
+             }
+                                     
+         }catch(SQLException e){
+             System.err.println(e);
+         }
+         return datos;
+     }
 }
 
