@@ -8,6 +8,7 @@ package controller;
 import model.ConsultasProductos;
 import model.Producto;
 import view.frmProducto;
+import view.PruebaIcono;
 
 /**
  *
@@ -20,8 +21,9 @@ public class main {
         Producto modPro= new Producto();
         ConsultasProductos modCPro= new ConsultasProductos();
         frmProducto vistaPro= new frmProducto();
+        PruebaIcono prueba= new PruebaIcono();
 
-        Controlador control= new Controlador(modPro,modCPro,vistaPro);
+        Controlador control= new Controlador(modPro,modCPro,vistaPro,prueba);
         control.start();
         vistaPro.setVisible(true);
     }

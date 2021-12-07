@@ -27,6 +27,7 @@ public class frmProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabelCodigo = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
         jLabelPrecio = new javax.swing.JLabel();
@@ -41,13 +42,19 @@ public class frmProducto extends javax.swing.JFrame {
         jButtonEliminar = new javax.swing.JButton();
         jButtonListar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jPanelDetalle = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDetalle = new javax.swing.JTable();
         jButtonLimpiar = new javax.swing.JButton();
+        jButtonEliminarItemTabla = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(102, 153, 255));
+        setIconImages(getIconImages());
 
         jLabelCodigo.setText("Código:");
 
@@ -76,19 +83,10 @@ public class frmProducto extends javax.swing.JFrame {
 
         jButtonBuscar.setText("Buscar");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
+        jPanelDetalle.setBackground(new java.awt.Color(102, 153, 255));
         jPanelDetalle.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle"));
 
+        jTableDetalle.setBackground(new java.awt.Color(0, 102, 102));
         jTableDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -118,15 +116,22 @@ public class frmProducto extends javax.swing.JFrame {
 
         jButtonLimpiar.setText("Limpiar");
 
+        jButtonEliminarItemTabla.setText("Eliminar");
+        jButtonEliminarItemTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarItemTablaActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Siguiente Vista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(119, 119, 119)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -156,27 +161,28 @@ public class frmProducto extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jButtonActualizar)
                         .addGap(67, 67, 67)
-                        .addComponent(jButtonEliminar)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButtonListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonEliminar))
                     .addComponent(jPanelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonListar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEliminarItemTabla))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBuscar))))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscar))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
@@ -194,11 +200,20 @@ public class frmProducto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonActualizar)
-                    .addComponent(jButtonEliminar)
-                    .addComponent(jButtonListar))
-                .addGap(52, 52, 52)
-                .addComponent(jPanelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonEliminar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jPanelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2)
+                        .addContainerGap(56, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonListar)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButtonEliminarItemTabla)
+                        .addGap(232, 232, 232))))
         );
 
         pack();
@@ -207,6 +222,10 @@ public class frmProducto extends javax.swing.JFrame {
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
+    private void jButtonEliminarItemTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarItemTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEliminarItemTablaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,9 +263,12 @@ public class frmProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
     public javax.swing.JButton jButtonActualizar;
     public javax.swing.JButton jButtonBuscar;
     public javax.swing.JButton jButtonEliminar;
+    public javax.swing.JButton jButtonEliminarItemTabla;
     public javax.swing.JButton jButtonGuardar;
     public javax.swing.JButton jButtonLimpiar;
     public javax.swing.JButton jButtonListar;
@@ -255,7 +277,6 @@ public class frmProducto extends javax.swing.JFrame {
     public javax.swing.JLabel jLabelCodigo;
     public javax.swing.JLabel jLabelNombre;
     public javax.swing.JLabel jLabelPrecio;
-    public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanelDetalle;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableDetalle;

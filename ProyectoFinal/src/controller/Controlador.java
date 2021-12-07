@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import model.ConsultasProductos;
 import model.Producto;
 import view.frmProducto;
+import view.PruebaIcono;
 
 /**
  *
@@ -26,19 +27,23 @@ public class Controlador implements ActionListener{
     private Producto modelPro;
     private ConsultasProductos modelCPro;
     private frmProducto vistaPro;
+    private PruebaIcono prueba;
     DefaultTableModel modeloTabla= new DefaultTableModel();
 
     
-    public Controlador(Producto modelPro,ConsultasProductos modelCPro,frmProducto vistaPro){
+    public Controlador(Producto modelPro,ConsultasProductos modelCPro,frmProducto vistaPro, PruebaIcono prueba){
         this.modelPro= modelPro;
         this.modelCPro= modelCPro;
         this.vistaPro= vistaPro;
+        this.prueba= prueba;
         this.vistaPro.jButtonGuardar.addActionListener(this);
         this.vistaPro.jButtonBuscar.addActionListener(this);
         this.vistaPro.jButtonActualizar.addActionListener(this);
         this.vistaPro.jButtonEliminar.addActionListener(this);
         this.vistaPro.jButtonListar.addActionListener(this);
         this.vistaPro.jButtonListar.addActionListener(this);
+        this.vistaPro.jButton2.addActionListener(this);
+        this.vistaPro.jButtonEliminarItemTabla.addActionListener(this);
     //    this.vistaPro.jTableDetalle.addComponentListener();
     
     }
@@ -132,6 +137,29 @@ public class Controlador implements ActionListener{
             } catch (SQLException ex) {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
+         }
+         
+         if(e.getSource()==vistaPro.jButtonEliminarItemTabla){
+             int fila= vistaPro.jTableDetalle.getSelectedRow();
+             if(fila!=-1){
+                 String codigo= vistaPro.jTableDetalle.getValueAt(fila, 0).toString();
+                 modelPro.setCodigo(codigo);
+                 try {
+                     modelCPro.eliminar(modelPro);
+                     limpiar();
+                     listar(vistaPro.jTableDetalle);
+                 } catch (SQLException ex) {
+                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             }
+         
+         }
+         
+         if(e.getSource()==vistaPro.jButton2){
+             String codigo= vistaPro.jTextFieldCodigo.getText();
+             vistaPro.setVisible(false);
+             prueba.setVisible(true);
+             prueba.jLabelPrueba.setText(codigo);
          }
          
              
